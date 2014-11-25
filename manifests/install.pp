@@ -11,7 +11,6 @@ class papertrail::install {
     mode    => '0640',
     content => template('papertrail/etc/rsyslog.d/papertrail.conf.erb'),
     require => Package['rsyslog', 'rsyslog-gnutls'],
-    notify  => Service['rsyslog'];
   }
 
   $rsyslog_user = $::operatingsystem ? {
