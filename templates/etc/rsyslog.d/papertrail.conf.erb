@@ -1,9 +1,10 @@
 # file is managed by puppet
 
-$DefaultNetstreamDriverCAFile /etc/syslog.papertrail.crt    # trust these CAs
+$DefaultNetstreamDriverCAFile <%= @cert %>                  # trust these CAs
 $DefaultNetstreamDriver gtls                                # use gtls netstream driver
 $ActionSendStreamDriverMode 1                               # require TLS
 $ActionSendStreamDriverAuthMode x509/name                   # authenticate by hostname
+$ActionSendStreamDriverPermittedPeer *.<%= @domain %>
 <%- if @action_resume_interval -%>
 $ActionResumeInterval <%= @action_resume_interval %>
 <%- end -%>

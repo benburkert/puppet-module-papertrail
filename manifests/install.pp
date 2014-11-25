@@ -4,7 +4,7 @@ class papertrail::install {
     ensure  => 'installed'
   }
 
-  file { '/etc/rsyslog.d/papertrail.conf':
+  file { '/etc/rsyslog.d/60-papertrail.conf':
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
@@ -26,7 +26,7 @@ class papertrail::install {
     group   => 'root',
     mode    => '0660',
     require => [
-      File['/etc/rsyslog.d/papertrail.conf'],
+      File['/etc/rsyslog.d/60-papertrail.conf'],
       Exec['get_certificates']
     ];
   }
